@@ -296,7 +296,7 @@ gulp.task('package', gulp.series(async () => {
 gulp.task('reload', () => gulp.src(['index.html'])
     .pipe(connect.reload()));
 
-gulp.task('serve', () => {
+gulp.task('serve', (done) => {
 
     connect.server({
         root: root,
@@ -327,5 +327,7 @@ gulp.task('serve', () => {
     ], gulp.series('css-core', 'reload'))
 
     gulp.watch(['test/*.html'], gulp.series('test'))
+
+    done();
 
 })
